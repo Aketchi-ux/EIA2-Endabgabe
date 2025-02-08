@@ -36,7 +36,8 @@
         <canvas id="fullscreenCanvas"></canvas>
         <div class="loadfireworks">
             <h1>Load Fireworks</h1>
-            <button id="foldineditor"><img src="Images/Fold In.jpg" alt=""></button>
+            <button id="foldinfireworks">Hide</button>
+            <button id="add">ADD</button>
         </div>
 
         <div class="sidebar">
@@ -59,12 +60,8 @@
             <div>
                 <label id="count">Particle Count</label>
                 <div id="count">
-                    <label id="10" for="tenparticles">10</label>
-                    <input type="radio" id="tenparticles" name="count">
-                    <label id="25" for="twentyfiveparticles">25</label>
-                    <input type="radio" id="twentyfiveparticles" name="count">
-                    <label id="50" for="fiftyparticles">50</label>
-                    <input type="radio" id="fiftyparticles" name="count">
+                    <input type="range" id="particleSlider" name="count" min="10" max="50" step="1" value="10">
+                    <span id="particleCountValue">10</span>
                 </div>
             </div>
 
@@ -92,5 +89,9 @@
         
     </div>
     <script src="main.js"></script>
+    <script src="Fireworks.js"></script>
+    <script src="Particles.js"></script>
+    <script src="Patterns.js"></script>
+    <script src="colour.js"></script>
 </body>
 </html>
