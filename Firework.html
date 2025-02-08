@@ -33,8 +33,13 @@
     </style>
 </head>
 <body>
-    <div class="canvas-container">
+    <div class="canvas-container"></div>
         <canvas id="fullscreenCanvas"></canvas>
+        
+        <div class="loadfireworks">
+            <h1>Load Fireworks</h1>
+        </div>
+
         <div class="sidebar">
 
             <h1>Edit Firework</h1>
@@ -62,9 +67,27 @@
                     <input type="radio" id="fiftyparticles" name="count">
                 </div>
             </div>
+
+            <div>
+                <label id="color">Color</label>
+                <div>
+                    <input type="color" id="fireworkcolor" name="color">
+                </div>
+            </div>
+
+            <div>
+                <label id="pattern">Patterns</label>
+                <div id="patterns">
+                    <label id="circle" for="circlepattern">Circle</label>
+                    <input type="radio" id="circlepattern" name="fireworkpattern">
+                    <label id="square" for="squarepattern">Square</label>
+                    <input type="radio" id="squarepattern" name="fireworkpattern">
+                    <label id="triangle" for="trianglepattern">Triangle</label>
+                    <input type="radio" id="trianglepattern" name="fireworkpattern">
+                </div>
+            </div>
         </div>
 
-        <div id="LoadFireworks">Load Firework</div>
     </div>
     <script src="main.js"></script>
 </body>
