@@ -2,7 +2,6 @@
 window.addEventListener("load", () => {
     const canvas = document.getElementById("fullscreenCanvas");
     const ctx = canvas.getContext("2d");
-    const fireworkButton = document.getElementById("fireworkButton");
     if (!ctx) {
         console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
         return;
