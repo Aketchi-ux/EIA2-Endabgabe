@@ -57,3 +57,13 @@ canvas {
     right: 0px;
     top: 0px;
 }
+#save {
+    padding: 15px 50px;
+    background-color: green;
+    border-radius: 25%;
+}
+#delete {
+    padding: 15px 50px;
+    background-color: red;
+    border-radius: 25%;
+}

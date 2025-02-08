@@ -40,11 +40,11 @@
         </div>
 
         <div class="sidebar">
-
             <h1>Edit Firework</h1>
             <label id="name" for="fireworkname">Name</label>
                 <input type="text" id="fireworkname" name="fireworkname">
-            <div id="explosion"></div>
+            
+            <div>
                 <label id="size">Explosion Size</label>
                 <div id="explosionsize">
                     <label id="small" for="smallexplosion">Small</label>
@@ -54,6 +54,7 @@
                     <label id="big" for="bigexplosion">Big</label>
                     <input type="radio" id="bigexplosion" name="size">
                 </div>
+            </div>
 
             <div>
                 <label id="count">Particle Count</label>
@@ -85,9 +86,10 @@
                     <input type="radio" id="trianglepattern" name="fireworkpattern">
                 </div>
             </div>
-            <button></button>
+            <button id="delete">DELETE</button>
+            <button id="save">SAVE</button>
         </div>
-
+        
     </div>
     <script src="main.js"></script>
 </body>
