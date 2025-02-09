@@ -52,22 +52,38 @@ var Firework;
         ctx.closePath();
     }
     Firework.drawCircle = drawCircle;
-    // Function to draw particles with dynamic color
-    function drawParticle(particle, color) {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${hexToRgb(color)}, ${particle.opacity})`; // Particles with dynamic color
-        ctx.fill();
-        ctx.closePath();
+    function createParticles(x, y, numParticles) {
+        const particles = [];
+        for (let i = 0; i < numParticles; i++) {
+            const size = Math.random() * 2 + 1; // Random size
+            const speedX = Math.random() * 6 - 3; // Random speed in X direction
+            const speedY = Math.random() * 6 - 3; // Random speed in Y direction
+            const opacity = Math.random() * 0.6 + 0.4; // Random opacity
+            const lifetime = Math.random() * 80 + 80; // Random lifetime
+            const prevX = x; // Initial previous position is the same as current position
+            const prevY = y;
+            particles.push({
+                x,
+                y,
+                size,
+                opacity,
+                speedX,
+                speedY,
+                lifetime,
+                prevX,
+                prevY,
+            });
+        }
+        return particles;
     }
-    Firework.drawParticle = drawParticle;
-    // Function to update particle positions and fading effect
+    Firework.createParticles = createParticles;
     function updateParticles(circle) {
         circle.particles.forEach(particle => {
             particle.x += particle.speedX;
             particle.y += particle.speedY;
-            particle.opacity -= 0.01; // Fade out particles over time
-            particle.lifetime -= 1; // Decrease lifetime of particle
+            particle.opacity -= 0.02; // Faster fade-out
+            particle.lifetime -= 5; // Decrease lifetime of particle
+            // Remove particle when lifetime or opacity is zero
             if (particle.lifetime <= 0 || particle.opacity <= 0) {
                 const index = circle.particles.indexOf(particle);
                 if (index > -1) {
@@ -77,28 +93,17 @@ var Firework;
         });
     }
     Firework.updateParticles = updateParticles;
-    // Function to create a random particle effect
-    function createParticles(x, y, numParticles) {
-        const particles = [];
-        for (let i = 0; i < numParticles; i++) {
-            const size = Math.random() * 3 + 1; // Random size for each particle
-            const speedX = Math.random() * 4 - 2; // Random horizontal speed
-            const speedY = Math.random() * 4 - 2; // Random vertical speed
-            const opacity = Math.random() * 0.7 + 0.3; // Random opacity
-            const lifetime = Math.random() * 100 + 100; // Random lifetime for each particle
-            particles.push({
-                x,
-                y,
-                size,
-                opacity,
-                speedX,
-                speedY,
-                lifetime,
-            });
-        }
-        return particles;
+    // Function to draw particles with dynamic color
+    function drawParticle(particle, color) {
+        // Use a small random variation in particle size to give a "sparkling" effect
+        const sparkleSize = particle.size + (Math.random() * 1.5 - 0.75);
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, sparkleSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${hexToRgb(color)}, ${particle.opacity})`; // Particles with dynamic color
+        ctx.fill();
+        ctx.closePath();
     }
-    Firework.createParticles = createParticles;
+    Firework.drawParticle = drawParticle;
     // Event listener for the slider to update the displayed particle count value
     particleSlider.addEventListener("input", () => {
         // Update the displayed value next to the slider

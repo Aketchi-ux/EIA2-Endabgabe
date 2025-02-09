@@ -1,4 +1,4 @@
-namespace Main{
+namespace Main {
 
     const particleSlider = document.getElementById("particleSlider") as HTMLInputElement;
     const particleCountValue = document.getElementById("particleCountValue") as HTMLSpanElement;
@@ -7,56 +7,56 @@ namespace Main{
     const addbutton = document.getElementById("add")!;
     let buttonCounter = 0;
 
-window.addEventListener("load", () => {
-    const canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d")!;
+    window.addEventListener("load", () => {
+        const canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
+        const ctx = canvas.getContext("2d")!;
 
-    if (!ctx) {
-        console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
-        return;
-    }
+        if (!ctx) {
+            console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
+            return;
+        }
 
-    function resizeCanvas(): void {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        draw();
-    }
+        function resizeCanvas(): void {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            draw();
+        }
 
-    function draw(): void {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+        function draw(): void {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-})
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+    })
 
-// Add click event listener for the button
-foldButton.addEventListener('click', () => {
-    if (loadFireworksDiv.style.display === 'none') {
-        // Show the 'loadfireworks' div
-        loadFireworksDiv.style.display = 'block';
-        foldButton.textContent = 'Hide';  // Change button text to 'Hide'
-        foldButton.classList.remove('fixed'); // Remove fixed position class
-    } else {
-        // Hide the 'loadfireworks' div
-        loadFireworksDiv.style.display = 'none';
-        foldButton.textContent = "Show";  // Change button text to 'Show'
-        foldButton.classList.add('fixed'); // Add the 'fixed' class to move button to the bottom-left
-    }
-});
+    // Add click event listener for the button
+    foldButton.addEventListener('click', () => {
+        if (loadFireworksDiv.style.display === 'none') {
+            // Show the 'loadfireworks' div
+            loadFireworksDiv.style.display = 'block';
+            foldButton.textContent = 'Hide';  // Change button text to 'Hide'
+            foldButton.classList.remove('fixed'); // Remove fixed position class
+        } else {
+            // Hide the 'loadfireworks' div
+            loadFireworksDiv.style.display = 'none';
+            foldButton.textContent = "Show";  // Change button text to 'Show'
+            foldButton.classList.add('fixed'); // Add the 'fixed' class to move button to the bottom-left
+        }
+    });
 
-particleSlider.addEventListener("input", () => {
-    // Update the span element with the current value of the slider
-    particleCountValue.textContent = particleSlider.value;
-});
+    particleSlider.addEventListener("input", () => {
+        // Update the span element with the current value of the slider
+        particleCountValue.textContent = particleSlider.value;
+    });
 
-addbutton.addEventListener("click", () => {
-    let elem = document.createElement("button") as HTMLButtonElement
-    elem.innerHTML = "New Firework";
-    loadFireworksDiv.appendChild(elem);
-    buttonCounter++;
-    elem.id = `fireworkButton-${buttonCounter}`;
-});
+    addbutton.addEventListener("click", () => {
+        let elem = document.createElement("button") as HTMLButtonElement
+        elem.innerHTML = "New Firework";
+        loadFireworksDiv.appendChild(elem);
+        buttonCounter++;
+        elem.id = `fireworkButton-${buttonCounter}`;
+    });
 
 };
