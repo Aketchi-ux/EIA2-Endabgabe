@@ -2,14 +2,14 @@
 var colour;
 (function (colour) {
     // Declare variables to store the selected color and canvas context
-    let selectedColor = "#ff0000"; // Default color is red
+    colour.selectedColor = "#ff0000"; // Default color is red
     // Get the color picker input element
     const colorInput = document.getElementById("fireworkcolor");
     // Update the selected color when the user changes the color
     colorInput.addEventListener("input", (event) => {
         const target = event.target;
-        selectedColor = target.value; // Get the new color from the color input
-        updateFireworkColor(selectedColor); // Update the firework's color
+        colour.selectedColor = target.value; // Get the new color from the color input
+        updateFireworkColor(colour.selectedColor); // Update the firework's color
     });
     // Function to update the firework's color on the canvas
     function updateFireworkColor(color) {

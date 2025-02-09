@@ -1,11 +1,15 @@
 namespace Main{
 
-window.addEventListener("load", () => {
-    const canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d");
     const particleSlider = document.getElementById("particleSlider") as HTMLInputElement;
     const particleCountValue = document.getElementById("particleCountValue") as HTMLSpanElement;
+    const foldButton = document.getElementById('foldinfireworks')!;
+    const loadFireworksDiv = document.querySelector('.loadfireworks')! as HTMLDivElement;
+    const addbutton = document.getElementById("add")!;
+    let buttonCounter = 0;
 
+window.addEventListener("load", () => {
+    const canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d")!;
 
     if (!ctx) {
         console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
@@ -27,9 +31,6 @@ window.addEventListener("load", () => {
     resizeCanvas();
 })
 
-const foldButton = document.getElementById('foldinfireworks');
-const loadFireworksDiv = document.querySelector('.loadfireworks');
-
 // Add click event listener for the button
 foldButton.addEventListener('click', () => {
     if (loadFireworksDiv.style.display === 'none') {
@@ -40,7 +41,7 @@ foldButton.addEventListener('click', () => {
     } else {
         // Hide the 'loadfireworks' div
         loadFireworksDiv.style.display = 'none';
-        foldButton.textContent = 'Show';  // Change button text to 'Show'
+        foldButton.textContent = "Show";  // Change button text to 'Show'
         foldButton.classList.add('fixed'); // Add the 'fixed' class to move button to the bottom-left
     }
 });
@@ -49,4 +50,13 @@ particleSlider.addEventListener("input", () => {
     // Update the span element with the current value of the slider
     particleCountValue.textContent = particleSlider.value;
 });
+
+addbutton.addEventListener("click", () => {
+    let elem = document.createElement("button") as HTMLButtonElement
+    elem.innerHTML = "New Firework";
+    loadFireworksDiv.appendChild(elem);
+    buttonCounter++;
+    elem.id = `fireworkButton-${buttonCounter}`;
+});
+
 };

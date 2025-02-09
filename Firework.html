@@ -34,6 +34,7 @@
 <body>
     <div class="canvas-container"></div>
         <canvas id="fullscreenCanvas"></canvas>
+
         <div class="loadfireworks">
             <h1>Load Fireworks</h1>
             <button id="foldinfireworks">Hide</button>
@@ -76,21 +77,24 @@
                 <label id="pattern">Patterns</label>
                 <div id="patterns">
                     <label id="circle" for="circlepattern">Circle</label>
-                    <input type="radio" id="circlepattern" name="fireworkpattern">
+                    <input type="radio" id="circlepattern" name="fireworkpattern" checked>
+                    
                     <label id="square" for="squarepattern">Square</label>
                     <input type="radio" id="squarepattern" name="fireworkpattern">
+                    
                     <label id="triangle" for="trianglepattern">Triangle</label>
                     <input type="radio" id="trianglepattern" name="fireworkpattern">
                 </div>
             </div>
+            
             <button id="delete">DELETE</button>
             <button id="save">SAVE</button>
         </div>
         
     </div>
     <script src="main.js"></script>
-    <script src="Fireworks.js"></script>
     <script src="Particles.js"></script>
+    <script src="Fireworks.js"></script>
     <script src="Patterns.js"></script>
     <script src="colour.js"></script>
 </body>

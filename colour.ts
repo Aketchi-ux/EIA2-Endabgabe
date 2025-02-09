@@ -1,7 +1,7 @@
 namespace colour{
 
     // Declare variables to store the selected color and canvas context
-let selectedColor: string = "#ff0000"; // Default color is red
+export let selectedColor: string = "#ff0000"; // Default color is red
 
 // Get the color picker input element
 const colorInput = document.getElementById("fireworkcolor") as HTMLInputElement;

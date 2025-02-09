@@ -6,8 +6,28 @@ var Firework;
     const ctx = canvas.getContext("2d");
     const particleSlider = document.getElementById("particleSlider");
     const particleCountValue = document.getElementById("particleCountValue");
+    class firework {
+        name;
+        explosionsize;
+        particlecount;
+        colour;
+        pattern;
+        constructor(name, explosionsize, particlecount, colour, pattern) {
+            this.name = name;
+            this.explosionsize = explosionsize;
+            this.particlecount = particlecount;
+            this.colour = colour;
+            this.pattern = pattern;
+        }
+    }
+    const fireworkuistate = new firework("Rocket Firework", // name
+    100, // explosionsize
+    50, // particlecount
+    "#ff0000", // colour
+    "circle" // pattern
+    );
     // Array to store multiple circles
-    const circles = [];
+    Firework.circles = [];
     // Default color (Initially red)
     let selectedColor = "#ff0000";
     // Get the color input from HTML
@@ -31,6 +51,7 @@ var Firework;
         ctx.fill();
         ctx.closePath();
     }
+    Firework.drawCircle = drawCircle;
     // Function to draw particles with dynamic color
     function drawParticle(particle, color) {
         ctx.beginPath();
@@ -39,8 +60,9 @@ var Firework;
         ctx.fill();
         ctx.closePath();
     }
+    Firework.drawParticle = drawParticle;
     // Function to update particle positions and fading effect
-    function updateParticles(circle, color) {
+    function updateParticles(circle) {
         circle.particles.forEach(particle => {
             particle.x += particle.speedX;
             particle.y += particle.speedY;
@@ -54,6 +76,7 @@ var Firework;
             }
         });
     }
+    Firework.updateParticles = updateParticles;
     // Function to create a random particle effect
     function createParticles(x, y, numParticles) {
         const particles = [];
@@ -75,6 +98,7 @@ var Firework;
         }
         return particles;
     }
+    Firework.createParticles = createParticles;
     // Event listener for the slider to update the displayed particle count value
     particleSlider.addEventListener("input", () => {
         // Update the displayed value next to the slider
@@ -93,20 +117,20 @@ var Firework;
             fadeOutInterval: setInterval(() => fadeOutCircle(newCircle), 50), // Start the fade-out process
             particles: createParticles(x, y, numParticles), // Use the slider value to create particles
         };
-        circles.push(newCircle);
+        Firework.circles.push(newCircle);
         // Function to fade out a specific circle
         function fadeOutCircle(circle) {
             circle.opacity -= 1 / 50; // Gradually decrease opacity (100 steps for 5 seconds)
             clearCanvas(); // Clear the canvas before redrawing all circles and particles
             // Redraw all circles (including the fading one) with the selected color
-            circles.forEach(c => {
+            Firework.circles.forEach(c => {
                 drawCircle(c.x, c.y, c.opacity, selectedColor);
-                updateParticles(c, selectedColor); // Update and draw particles for each circle
+                updateParticles(c); // Update and draw particles for each circle
                 c.particles.forEach(p => drawParticle(p, selectedColor)); // Draw each particle
             });
             if (circle.opacity <= 0) {
                 clearInterval(circle.fadeOutInterval); // Stop fading the current circle
-                circles.splice(circles.indexOf(circle), 1); // Remove the circle from the array
+                Firework.circles.splice(Firework.circles.indexOf(circle), 1); // Remove the circle from the array
             }
         }
     });
@@ -116,6 +140,7 @@ var Firework;
         ctx.fillStyle = "black"; // Fill with black color to ensure background stays black
         ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill the entire canvas with black
     }
+    Firework.clearCanvas = clearCanvas;
     // Convert hex color to RGB for the gradient and particle effect
     function hexToRgb(hex) {
         const hexValue = hex.replace("#", "");
@@ -143,22 +168,22 @@ var Firework;
             y,
             opacity: 1, // Start with full opacity
             fadeOutInterval: setInterval(() => fadeOutCircle(newCircle), 50), // Start the fade-out process
-            particles: createParticles(x, y), // Create particles around the circle
+            particles: createParticles(x, y, 15), // Create particles around the circle
         };
-        circles.push(newCircle);
+        Firework.circles.push(newCircle);
         // Function to fade out a specific circle
         function fadeOutCircle(circle) {
             circle.opacity -= 1 / 50; // Gradually decrease opacity (100 steps for 5 seconds)
             clearCanvas(); // Clear the canvas before redrawing all circles and particles
             // Redraw all circles (including the fading one) with the selected color
-            circles.forEach(c => {
+            Firework.circles.forEach(c => {
                 drawCircle(c.x, c.y, c.opacity, selectedColor);
-                updateParticles(c, selectedColor); // Update and draw particles for each circle
+                updateParticles(c); // Update and draw particles for each circle
                 c.particles.forEach(p => drawParticle(p, selectedColor)); // Draw each particle
             });
             if (circle.opacity <= 0) {
                 clearInterval(circle.fadeOutInterval); // Stop fading the current circle
-                circles.splice(circles.indexOf(circle), 1); // Remove the circle from the array
+                Firework.circles.splice(Firework.circles.indexOf(circle), 1); // Remove the circle from the array
             }
         }
     });
