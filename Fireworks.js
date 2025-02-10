@@ -5,8 +5,8 @@ var Firework;
     let ctx = canvas.getContext("2d");
     let particleSlider = document.getElementById("particleSlider");
     let particleCountValue = document.getElementById("particleCountValue");
-    let explosionSizeSlider = document.getElementById("explosionSizeSlider");
-    let explosionSizeValue = document.getElementById("explosionSizeValue");
+    Firework.explosionSizeSlider = document.getElementById("explosionSizeSlider");
+    Firework.explosionSizeValue = document.getElementById("explosionSizeValue");
     class Circle {
         x;
         y;
@@ -30,23 +30,23 @@ var Firework;
     class firework {
         explosiosize;
         particlecount;
-        colour;
-        constructor(explosionsize, particlecount, colour) {
+        color;
+        constructor(explosionsize, particlecount, color) {
             this.explosiosize = explosionsize;
             this.particlecount = particlecount;
-            this.colour = colour;
+            this.color = color;
         }
     }
     Firework.firework = firework;
     let fireworkuistate = {
-        explosionsize: parseInt(explosionSizeSlider.value), // Default explosion size
+        explosionsize: parseInt(Firework.explosionSizeSlider.value), // Default explosion size
         particlecount: 50,
-        colour: "#ff0000",
+        color: "#ff0000",
     };
     // Listen for explosion size changes
-    explosionSizeSlider.addEventListener("input", () => {
-        fireworkuistate.explosionsize = parseInt(explosionSizeSlider.value);
-        explosionSizeValue.textContent = explosionSizeSlider.value;
+    Firework.explosionSizeSlider.addEventListener("input", () => {
+        fireworkuistate.explosionsize = parseInt(Firework.explosionSizeSlider.value);
+        Firework.explosionSizeValue.textContent = Firework.explosionSizeSlider.value;
         drawPreviewCircle();
     });
     Firework.circles = [];
@@ -85,29 +85,20 @@ var Firework;
         Firework.circles.push(newCircle);
     });
     function fadeOutCircle(circle) {
-        circle.opacity -= 0.5 / 100; // Slower fade-out for longer visibility
-        clearCanvas();
-        circle.opacity -= 1 / 50; // Gradually decrease opacity (100 steps for 5 seconds)
-        clearCanvas(); // Clear the canvas before redrawing all circles and particles
-        // Redraw all circles (including the fading one) with the selected color
-        Firework.circles.forEach(c => {
-            drawCircle(c.x, c.y, c.opacity, colour.selectedColor);
-            Particles.updateParticles(c); // Update and draw particles for each circle
-            c.particles.forEach(p => Particles.drawParticle(p, colour.selectedColor)); // Draw each particle
-        });
+        circle.opacity -= 0.02; // Adjust fade speed (higher = faster)
         if (circle.opacity <= 0) {
-            clearInterval(circle.fadeOutInterval); // Stop fading the current circle
-            Firework.circles.splice(Firework.circles.indexOf(circle), 1); // Remove the circle from the array
+            clearInterval(circle.fadeOutInterval); // Stop fading this circle
+            Firework.circles.splice(Firework.circles.indexOf(circle), 1); // Remove from array
+            return; // Exit function early
         }
+        clearCanvas(); // Clear before redrawing
+        // Redraw all circles and their particles
         Firework.circles.forEach(c => {
             drawCircle(c.x, c.y, c.opacity, selectedColor);
             Particles.updateParticles(c);
             c.particles.forEach(p => Particles.drawParticle(p, selectedColor));
+            clearCanvas();
         });
-        if (circle.opacity <= 0) {
-            clearInterval(circle.fadeOutInterval);
-            Firework.circles.splice(Firework.circles.indexOf(circle), 1);
-        }
     }
     Firework.fadeOutCircle = fadeOutCircle;
     function clearCanvas() {

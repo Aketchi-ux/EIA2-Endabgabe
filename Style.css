@@ -152,3 +152,16 @@ label[for="explosionSizeSlider"],
     background-color: red;
     border-radius: 25%;
 }
+
+.firework-btn {
+    font-size: 18px;  /* Make the button text bigger */
+    padding: 12px 20px; /* Increase padding for a larger button */
+    margin: 10px 0;  /* Add 10px space between each button */
+    display: block;  /* Ensure buttons stack vertically */
+    width: 100%; /* Optional: Make them full width */
+    background-color: #ff6600; /* Optional: Change button color */
+    color: white; /* Make text white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

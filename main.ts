@@ -5,6 +5,9 @@ namespace Main {
     let foldButton = document.getElementById("foldinfireworks")!;
     let loadFireworksDiv = document.querySelector(".loadfireworks")! as HTMLDivElement;
     let addbutton = document.getElementById("add")!;
+    let deletebutton = document.getElementById("delete")!;
+    let savebutton = document.getElementById("save")!;
+
     let buttonCounter = 0;
 
     window.addEventListener("load", () => {
@@ -36,17 +39,59 @@ namespace Main {
         loadFireworksDiv.style.display = "none";
     });
 
+
+    // Update sidebar values when sliders change
     particleSlider.addEventListener("input", () => {
-        // Update the span element with the current value of the slider
         particleCountValue.textContent = particleSlider.value;
     });
 
+    // Add new firework button with attributes
     addbutton.addEventListener("click", () => {
-        let elem = document.createElement("button") as HTMLButtonElement
+        let elem = document.createElement("button") as HTMLButtonElement;
         elem.innerHTML = "New Firework";
+        elem.classList.add("firework-btn"); // Add class for styling
         loadFireworksDiv.appendChild(elem);
         buttonCounter++;
-        elem.id = `fireworkButton-${buttonCounter}`;
     });
 
+    savebutton.addEventListener("click", () => {
+        // Get current firework settings
+        let explosionSize = Firework.explosionSizeSlider.value;
+        let particleCount = particleSlider.value;
+        let fireworkColor = color.selectedColor;
+    
+        // Create a new button for the saved firework
+        let saveing = document.createElement("button") as HTMLButtonElement;
+        saveing.innerHTML = `Firework ${buttonCounter + 1}`;
+        saveing.classList.add("firework-btn"); // Add class for styling
+    
+        // Store firework settings in localStorage
+        let fireworkData = {
+            explosionSize,
+            particleCount,
+            fireworkColor
+        };
+        localStorage.setItem(`firework-${buttonCounter + 1}`, JSON.stringify(fireworkData));
+    
+        // Append button to the loadFireworksDiv
+        loadFireworksDiv.appendChild(saveing);
+        buttonCounter++;
+    
+        // When clicking the saved button, apply its settings
+        saveing.addEventListener("click", () => {
+            let savedData = JSON.parse(localStorage.getItem(saveing.innerHTML) || "{}");
+    
+            if (savedData.explosionSize) Firework.explosionSizeSlider.value = savedData.explosionSize;
+            if (savedData.particleCount) particleSlider.value = savedData.particleCount;
+            if (savedData.fireworkColor) color.selectedColor = savedData.fireworkColor;
+    
+            Firework.explosionSizeValue.textContent = Firework.explosionSizeSlider.value;
+            particleCountValue.textContent = particleSlider.value;
+        });
+    });
+    
+
+    deletebutton.addEventListener("click", () => {
+        
+    })
 };
