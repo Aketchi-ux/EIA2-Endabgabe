@@ -21,48 +21,64 @@ canvas {
 }
 
 #size {
-
+    font-size: 50px;
     color: white;
 }
 
-#explosionsize label {
-    font-size: 16px; /* Larger font size */
-    margin-right: 10px;
+#explosionSizeSlider {
+    width: 300px; /* Make slider wider */
+    height: 10px; /* Increase thickness */
+    background: #444; /* Darker background */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
 }
 
-#explosionsize input[type="radio"] {
-    transform: scale(1.3); /* Make the radio buttons bigger */
-    margin-right: 10px;
+label[for="explosionSizeSlider"],
+#explosionSizeValue {
+    color: white;
+    font-size: 18px; /* Make text bigger */
+    font-weight: bold;
 }
 
-#count label {
-    font-size: 16px; /* Larger font size */
-    margin-right: 10px;
+/* Style the slider */
+#particleSlider {
+    width: 300px; /* Make slider wider */
+    height: 10px; /* Increase thickness */
+    background: #444; /* Darker background */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
 }
 
-#count input[type="radio"] {
-    transform: scale(1.3); /* Make the radio buttons bigger */
-    margin-right: 10px; /* Adjust space between radio button and label */
+/* Make the particle count value text white and larger */
+#particleCountValue {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
-#color label {
-    font-size: 16px; /* Larger font size */
-    margin-right: 10px;
+/* Style the color picker label */
+#color {
+    color: white;
+    font-size: 20px; /* Bigger text */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
 }
 
+/* Center and enlarge the color picker */
 #fireworkcolor {
-    transform: scale(2); /* Make the color picker larger */
-    cursor: pointer; /* Keep the pointer cursor when hovering over the color input */
-}
-
-#patterns label {
-    font-size: 16px; /* Larger font size */
-    margin-right: 10px;
-}
-
-#patterns input[type="radio"] {
-    transform: scale(1.3); /* Make the radio buttons bigger */
-    margin-right: 10px; /* Adjust space between radio button and label */
+    width: 300px;  /* Bigger width */
+    height:100px; /* Bigger height */
+    border: none;
+    border-radius: 8px; /* Rounded edges */
+    cursor: pointer;
+    padding: 5px;
+    background: black; /* Background for a better look */
 }
 
 #small {

@@ -1,15 +1,15 @@
 "use strict";
 var Main;
 (function (Main) {
-    const particleSlider = document.getElementById("particleSlider");
-    const particleCountValue = document.getElementById("particleCountValue");
-    const foldButton = document.getElementById('foldinfireworks');
-    const loadFireworksDiv = document.querySelector('.loadfireworks');
-    const addbutton = document.getElementById("add");
+    let particleSlider = document.getElementById("particleSlider");
+    let particleCountValue = document.getElementById("particleCountValue");
+    let foldButton = document.getElementById("foldinfireworks");
+    let loadFireworksDiv = document.querySelector(".loadfireworks");
+    let addbutton = document.getElementById("add");
     let buttonCounter = 0;
     window.addEventListener("load", () => {
-        const canvas = document.getElementById("fullscreenCanvas");
-        const ctx = canvas.getContext("2d");
+        let canvas = document.getElementById("fullscreenCanvas");
+        let ctx = canvas.getContext("2d");
         if (!ctx) {
             console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
             return;
@@ -26,20 +26,9 @@ var Main;
         window.addEventListener("resize", resizeCanvas);
         resizeCanvas();
     });
-    // Add click event listener for the button
-    foldButton.addEventListener('click', () => {
-        if (loadFireworksDiv.style.display === 'none') {
-            // Show the 'loadfireworks' div
-            loadFireworksDiv.style.display = 'block';
-            foldButton.textContent = 'Hide'; // Change button text to 'Hide'
-            foldButton.classList.remove('fixed'); // Remove fixed position class
-        }
-        else {
-            // Hide the 'loadfireworks' div
-            loadFireworksDiv.style.display = 'none';
-            foldButton.textContent = "Show"; // Change button text to 'Show'
-            foldButton.classList.add('fixed'); // Add the 'fixed' class to move button to the bottom-left
-        }
+    // Hide the div when foldButton is clicked
+    foldButton.addEventListener("click", () => {
+        loadFireworksDiv.style.display = "none";
     });
     particleSlider.addEventListener("input", () => {
         // Update the span element with the current value of the slider

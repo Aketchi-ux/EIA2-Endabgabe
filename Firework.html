@@ -49,20 +49,10 @@
 
     <div class="sidebar">
         <h1>Edit Firework</h1>
-        <label id="name" for="fireworkname">Name</label>
-        <input type="text" id="fireworkname" name="fireworkname">
 
-        <div>
-            <label id="size">Explosion Size</label>
-            <div id="explosionsize">
-                <label id="small" for="smallexplosion">Small</label>
-                <input type="radio" id="smallexplosion" name="size">
-                <label id="medium" for="medium">Medium</label>
-                <input type="radio" id="mediumexplosion" name="size">
-                <label id="big" for="bigexplosion">Big</label>
-                <input type="radio" id="bigexplosion" name="size">
-            </div>
-        </div>
+        <label for="explosionSizeSlider">Explosion Size:</label>
+        <input type="range" id="explosionSizeSlider" min="50" max="300" value="120">
+        <span id="explosionSizeValue">120</span>
 
         <div>
             <label id="count">Particle Count</label>
@@ -76,20 +66,6 @@
             <label id="color">Color</label>
             <div>
                 <input type="color" id="fireworkcolor" name="color">
-            </div>
-        </div>
-
-        <div>
-            <label id="pattern">Patterns</label>
-            <div id="patterns">
-                <label id="circle" for="circlepattern">Circle</label>
-                <input type="radio" id="circlepattern" name="fireworkpattern" checked>
-
-                <label id="square" for="squarepattern">Square</label>
-                <input type="radio" id="squarepattern" name="fireworkpattern">
-
-                <label id="triangle" for="trianglepattern">Triangle</label>
-                <input type="radio" id="trianglepattern" name="fireworkpattern">
             </div>
         </div>
 

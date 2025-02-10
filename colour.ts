@@ -4,19 +4,19 @@ namespace colour {
     export let selectedColor: string = "#ff0000"; // Default color is red
 
     // Get the color picker input element
-    const colorInput = document.getElementById("fireworkcolor") as HTMLInputElement;
+    let colorInput = document.getElementById("fireworkcolor") as HTMLInputElement;
 
     // Update the selected color when the user changes the color
     colorInput.addEventListener("input", (event: Event) => {
-        const target = event.target as HTMLInputElement;
+        let target = event.target as HTMLInputElement;
         selectedColor = target.value; // Get the new color from the color input
         updateFireworkColor(selectedColor); // Update the firework's color
     });
 
     // Function to update the firework's color on the canvas
     function updateFireworkColor(color: string): void {
-        const canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
-        const ctx = canvas.getContext("2d");
+        let canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
+        let ctx = canvas.getContext("2d");
 
         if (ctx) {
             // Clear the canvas
@@ -30,5 +30,4 @@ namespace colour {
             ctx.closePath();
         }
     }
-
 }
