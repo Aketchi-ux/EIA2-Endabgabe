@@ -115,6 +115,7 @@ label[for="explosionSizeSlider"],
     left: 0;
     height: 25%;
     width: 50%;
+    overflow-y: auto; /* Enables vertical scrolling */
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
     backdrop-filter: blur(5px); /* Adds a nice glass effect */
 }
@@ -159,7 +160,7 @@ label[for="explosionSizeSlider"],
     margin: 10px 0;  /* Add 10px space between each button */
     display: block;  /* Ensure buttons stack vertically */
     width: 100%; /* Optional: Make them full width */
-    background-color: #ff6600; /* Optional: Change button color */
+    background-color: #878787; /* Optional: Change button color */
     color: white; /* Make text white */
     border: none;
     border-radius: 5px;

@@ -36,14 +36,6 @@ var Main;
     particleSlider.addEventListener("input", () => {
         particleCountValue.textContent = particleSlider.value;
     });
-    // Add new firework button with attributes
-    addbutton.addEventListener("click", () => {
-        let elem = document.createElement("button");
-        elem.innerHTML = "New Firework";
-        elem.classList.add("firework-btn"); // Add class for styling
-        loadFireworksDiv.appendChild(elem);
-        buttonCounter++;
-    });
     savebutton.addEventListener("click", () => {
         // Get current firework settings
         let explosionSize = Firework.explosionSizeSlider.value;
