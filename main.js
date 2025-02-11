@@ -49,6 +49,8 @@ var Main;
         for (let itemId in responseData) {
             createFireworksButton(itemId);
         }
+        //Loops through each firework ID in responseData
+        //calls createFireworksButton(itemId) to create a button for that firework
     });
     // Hide the div when foldButton is clicked
     foldButton.addEventListener("click", () => {
