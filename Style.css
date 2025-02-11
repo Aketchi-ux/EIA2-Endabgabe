@@ -139,18 +139,11 @@ label[for="explosionSizeSlider"],
 
 #save {
     position: absolute;
+    width: 100%;
     bottom: 0px;
     right: 5px;
     padding: 15px 50px;
     background-color: green;
-    border-radius: 25%;
-}
-
-#delete {
-    position: absolute;
-    bottom: 0px;
-    padding: 15px 50px;
-    background-color: red;
     border-radius: 25%;
 }
 
@@ -165,4 +158,14 @@ label[for="explosionSizeSlider"],
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 3px;
 }

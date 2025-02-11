@@ -17,7 +17,7 @@ var color;
         let ctx = canvas.getContext("2d");
         if (ctx) {
             // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            Firework.clearCanvas();
             // Draw the new firework with the selected color (example: a circle)
             ctx.beginPath();
             ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2); // Draw a circle

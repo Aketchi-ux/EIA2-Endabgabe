@@ -20,7 +20,7 @@ namespace color {
 
         if (ctx) {
             // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            Firework.clearCanvas();
 
             // Draw the new firework with the selected color (example: a circle)
             ctx.beginPath();
