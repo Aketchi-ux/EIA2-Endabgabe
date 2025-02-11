@@ -10,11 +10,7 @@ var Main;
     let buttonCounter = 0;
     window.addEventListener("load", async () => {
         let canvas = document.getElementById("fullscreenCanvas");
-        let ctx = canvas.getContext("2d");
-        if (!ctx) {
-            console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
-            return;
-        }
+        let ctx = canvas.getContext("2d"); //(context) => crc2 is referring to ctx, used to draw on canvas
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;

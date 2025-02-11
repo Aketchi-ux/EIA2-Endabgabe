@@ -11,13 +11,8 @@ namespace Main {
 
     window.addEventListener("load", async () => {
         let canvas = document.getElementById("fullscreenCanvas") as HTMLCanvasElement;
-        let ctx = canvas.getContext("2d")!;
-
-        if (!ctx) {
-            console.error("Canvas-Rendering-Context konnte nicht initialisiert werden.");
-            return;
-        }
-
+        let ctx = canvas.getContext("2d")!; //(context) => crc2 is referring to ctx, used to draw on canvas
+        
         function resizeCanvas(): void {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
