@@ -6,7 +6,8 @@ namespace Firework {
     export let explosionSizeSlider = document.getElementById("explosionSizeSlider") as HTMLInputElement;
     export let explosionSizeValue = document.getElementById("explosionSizeValue") as HTMLSpanElement;
 
-    export class Circle {
+    //interface creates an instance of this interface with these variables
+    export interface Circle {
         x: number;
         y: number;
         opacity: number;
@@ -14,7 +15,7 @@ namespace Firework {
         particles: Particle[];
     }
 
-    export class Particle {
+    export interface Particle {
         x: number;
         y: number;
         size: number;
@@ -26,15 +27,10 @@ namespace Firework {
         prevY: number;
     }
 
-    export class firework {
-        public explosiosize: number;
-        public particlecount: number;
-        public colour: string;
-        constructor(explosionsize: number, particlecount: number, colour: string) {
-            this.explosiosize = explosionsize;
-            this.particlecount = particlecount;
-            this.colour = colour;
-        }
+    export interface firework {
+        explosiosize: number;
+        particlecount: number;
+        colour: string;
     }
 
     let fireworkuistate = {
