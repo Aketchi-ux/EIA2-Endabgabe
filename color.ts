@@ -23,11 +23,11 @@ namespace color {
             Firework.clearCanvas();
 
             // Draw the new firework with the selected color (example: a circle)
-            ctx.beginPath();
+            ctx.beginPath();//starts new drawing Path
             ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2); // Draw a circle
             ctx.fillStyle = color; // Set the fill color to the selected color
             ctx.fill(); // Fill the circle with the selected color
-            ctx.closePath();
+            ctx.closePath();//ends the drawing path
         }
     }
 }

@@ -42,9 +42,16 @@ namespace Firework {
     // Listen for explosion size changes
     explosionSizeSlider.addEventListener("input", () => {
         fireworkuistate.explosionsize = parseInt(explosionSizeSlider.value);
+        //explosionSizeSlider.value gets the current value of the slider as a string.
+        //parseInt(...) converts it to a number.
+        //This updates fireworkuistate.explosionsize, which likely stores the explosion size for fireworks.
         explosionSizeValue.textContent = explosionSizeSlider.value;
+        //explosionSizeValue refers to an HTML element
+        //It updates the displayed text to match the slider's value, so users see the current explosion size.
         drawPreviewCircle();
     });
+    //explosionSizeSlider refers to an <input type="range"> slider in the HTML.
+    //The "input" event triggers every time the slider's value changes (even before the user releases it).
     
     export let circles: Circle[] = []; //declares and array of circle objects
     let selectedColor: string = "#ff0000"; 
@@ -88,9 +95,9 @@ namespace Firework {
         let newCircle: Circle = {
             x,
             y,
-            opacity: 1,
-            fadeOutInterval: setInterval(() => fadeOutCircle(newCircle), 50),
-            particles: Particles.createParticles(x, y, numParticles),
+            opacity: 1,//circle fully visible
+            fadeOutInterval: setInterval(() => fadeOutCircle(newCircle), 50),//calls fadeOutCircle(newCircle)every 50 Milliseconds
+            particles: Particles.createParticles(x, y, numParticles),//generates an array of "Particle" objects
         };
         circles.push(newCircle);
     });
